@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gol</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<canvas id="gol" width="1000" height="1000"></canvas>
+
+<div class="content">
+  <form onchange="changeMode(this.mode.value)">
+    <h3>Mode:</h3>
+    <label for="classic">
+      <input type="radio" name="mode" id="classic" value="classic">
+      Classic
+    </label>
+    <label for="smooth">
+      <input type="radio" name="mode" id="smooth" value="smooth">
+      Smooth
+    </label>
+    <label for="shinny">
+      <input type="radio" name="mode" id="shinny" value="shinny">
+      Shinny
+    </label>
+    <label for="blob">
+      <input type="radio" name="mode" id="blob" value="blob" checked>
+      Blob
+    </label>
+  </form>
+  <h1>
+    <small id="conway">Conway's</small><br/>
+    Game <small>Of</small> Life
+  </h1>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
