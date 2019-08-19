@@ -1,9 +1,15 @@
+* {
+  max-width: 100%
+}
 body {
   margin: 0;
   background-color: #000;
   color: #fff;
   font-family: sans-serif;
   overflow: hidden;
+}
+canvas {
+  display: block;
 }
 small {
   font-size: 0.65em;

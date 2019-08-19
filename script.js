@@ -1,5 +1,6 @@
-FRAME_RATE = 30; // fps interger
-HAZARD = 100; // integer for ms, 0 for inactive
+const FRAME_RATE = 30; // fps interger
+const HAZARD = 100; // integer for ms, 0 for inactive
+const DEFAULT_MOD = "blob";
 
 var canvas = document.getElementById("gol");
 var ctx = canvas.getContext("2d");
@@ -104,16 +105,17 @@ function toggleCell(x, y, big){
 }
 
 function changeMode(mode) {
-  MODE = mode ? mode : 'blob';
+  MODE = mode ? mode : DEFAULT_MOD;
   switch (MODE) {
     case 'classic':
       return canvas.style = "";
     case 'smooth':
       return canvas.style = "";
     case 'shinny':
-      return canvas.style = "filter: blur(1px) contrast(10)";
+      return canvas.style = "filter: blur(2px) contrast(10)";
     case 'blob':
       return canvas.style = "filter: blur(7px) contrast(50)";
+      // return ctx.filter = "blur(7px) contrast(50)";
     default:
       return false;
   }
@@ -144,3 +146,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 1000/FRAME_RATE)
 
 })
+/* */

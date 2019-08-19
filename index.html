@@ -28,6 +28,9 @@
       Blob
     </label>
   </form>
+  <form onchange="(()=>document.getElementById('gol').style='display:none')">
+    <input type="checkbox"> See wit Sphere
+  </form>
   <h1>
     <small id="conway">Conway's</small><br/>
     Game <small>Of</small> Life
@@ -35,5 +38,7 @@
 </div>
 
 <script src="./script.js"></script>
+<script src="three.js"></script>
+<script src="sphere.js"></script>
 </body>
 </html>
