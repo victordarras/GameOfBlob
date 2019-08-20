@@ -2,7 +2,8 @@ var renderer, scene, camera, composer, planet, skelet, texture;
 var canvas = document.getElementById("gol");
 
 window.onload = function() {
-  // canvas.style = "display:none"
+  canvas.style = "display:none"
+  document.body.style = "background:radial-gradient(#222, #000)"
   init();
   animate();
 }

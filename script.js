@@ -1,6 +1,6 @@
-const FRAME_RATE = 30; // fps interger
+// const FRAME_RATE = 30; // fps interger
 const HAZARD = 100; // integer for ms, 0 for inactive
-const DEFAULT_MOD = "blob";
+const DEFAULT_MOD = "shinny";
 
 var canvas = document.getElementById("gol");
 var ctx = canvas.getContext("2d");
@@ -83,24 +83,59 @@ function newCycle() {
 
 function toggleCell(x, y, big){
   dataArray[x][y] = !dataArray[x][y];
-  if (dataArray && big) {
+  if (big && dataArray[x+5] && dataArray[x-5]) {
+    // DEFAULT
     dataArray[x+1][y] = !dataArray[x+1][y];//right
     dataArray[x-3][y] = !dataArray[x-3][y];//left
     dataArray[x-1][y] = !dataArray[x-1][y];//top
-    dataArray[x][y+1] = !dataArray[x-1][y+1];//bottom
+    dataArray[x][y+1] = !dataArray[x][y+1];//bottom
     dataArray[x+3][y] = !dataArray[x+3][y];//right
     dataArray[x-5][y] = !dataArray[x-5][y];//left
-    dataArray[x-3][y] = !dataArray[x-3][y];//top
     dataArray[x][y+3] = !dataArray[x-3][y+3];//bottom
-    // wtf
-    dataArray[x+3][y] = !dataArray[x+3][y];//right
-    dataArray[x-5][y] = !dataArray[x-5][y];//left
-    dataArray[x-3][y] = !dataArray[x-3][y];//top
-    dataArray[x-3][y+3] = !dataArray[x-3][y+3];//bottom
-    dataArray[x+5][y] = !dataArray[x+5][y];//right
-    dataArray[x-7][y] = !dataArray[x-7][y];//left
-    dataArray[x-5][y] = !dataArray[x-5][y];//top
-    dataArray[x-5][y+5] = !dataArray[x-5][y+5];//bottom
+
+    // SMALL EXPLODER
+    // dataArray[x-1][-y] = false;
+    // dataArray[x+1][-y] = false;
+    // dataArray[x][-y] = true;
+    // dataArray[x][y] = true;
+    // dataArray[x-1][y] = true;
+    // dataArray[x+1][y] = true;
+    // dataArray[x][y+1] = false;
+    // dataArray[x-1][y+1] = true;
+    // dataArray[x+1][y+1] = true;
+    // dataArray[x-1][y+2] = false;
+    // dataArray[x+1][y+2] = false;
+
+    // EXPLODER
+    // dataArray[x-2][y-2] = true;
+    // dataArray[x-1][y-2] = false;
+    // dataArray[x][y-2] = true;
+    // dataArray[x+1][y-2] = false;
+    // dataArray[x+2][y-2] = true;
+    // //
+    // dataArray[x-2][y-1] = true;
+    // dataArray[x-1][y-1] = false;
+    // dataArray[x][y-1] = false;
+    // dataArray[x+1][y-1] = false;
+    // dataArray[x+2][y-1] = true;
+    // //
+    // dataArray[x-2][y] = true;
+    // dataArray[x-1][y] = false;
+    // dataArray[x][y] = false;
+    // dataArray[x+1][y] = false;
+    // dataArray[x+2][y] = true;
+    // //
+    // dataArray[x-2][y+1] = true;
+    // dataArray[x-1][y+1] = false;
+    // dataArray[x][y+1] = false;
+    // dataArray[x+1][y+1] = false;
+    // dataArray[x+2][y+1] = true;
+    // //
+    // dataArray[x-2][y+2] = true;
+    // dataArray[x-1][y+2] = false;
+    // dataArray[x][y+2] = true;
+    // dataArray[x+1][y+2] = false;
+    // dataArray[x+2][y+2] = true;
   }
 }
 
@@ -139,11 +174,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }, HAZARD)
   }
 
-  // main loop
-  const loop = window.setInterval(function(){
+  function loop() {
     newCycle();
     draw();
-  }, 1000/FRAME_RATE)
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop)
+  // To get the framerate working again see : https://stackoverflow.com/questions/19764018/controlling-fps-with-requestanimationframe
+  // OR
+  // const loop = window.setInterval(function(){
+  //   newCycle();
+  //   draw();
+  // }, 1000/FRAME_RATE)
 
 })
 /* */
