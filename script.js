@@ -45,7 +45,7 @@ function draw() {
       if (MODE === 'smooth' || MODE === 'blob') {
         ctx.fillStyle = cell ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.05)";
       }
-      ctx.fillRect((x-1)*10, (y-1)*10, 10, 10);
+      ctx.fillRect( x * 10,  y * 10, 10, 10);
     })
   })
   // console.log('map drawn')
